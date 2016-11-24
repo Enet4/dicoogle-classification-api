@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pt.ua.dicoogle</groupId>
+    <artifactId>classification-api</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dicoogle-sdk.version>2.4.0</dicoogle-sdk.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <name>dicoogle-classification-api</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <header>short-license.txt</header>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/package-info.java</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>prod-repository</id>
+            <properties>
+            </properties>
+            <distributionManagement>
+                <!-- Versioned releases are published to the releases repository -->
+                <repository>
+                    <id>mi</id>
+                    <url>http://bioinformatics.ua.pt/maven/content/repositories/mi</url>
+                </repository>
+
+                <!-- Snapshot releases are published to the snapshots repository -->
+                <snapshotRepository>
+                    <id>mi</id>
+                    <url>http://bioinformatics.ua.pt/maven/content/repositories/mi-snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>pt.ua.ieeta</groupId>
+            <artifactId>dicoogle-sdk</artifactId>
+            <version>${dicoogle-sdk.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
