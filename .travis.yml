@@ -6,3 +6,5 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
+before_install:
+  - jdk_switcher use oraclejdk8
