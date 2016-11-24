@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014  Universidade de Aveiro, DETI/IEETA, Bioinformatics Group - http://bioinformatics.ua.pt/
+ * Copyright (C) 2016  Universidade de Aveiro, DETI/IEETA, Bioinformatics Group - http://bioinformatics.ua.pt/
  *
  * This file is part of Dicoogle/dicoogle-classification-api.
  *
