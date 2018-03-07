@@ -18,9 +18,6 @@
  */
 package pt.ua.dicoogle.classification.api;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URI;
 import java.util.Objects;
 import java.util.regex.MatchResult;
@@ -31,8 +28,6 @@ import java.util.regex.Pattern;
  * @author Eduardo Pinho <eduardopinho@ua.pt>
  */
 public class PredictionIdentifier {
-    private static final Logger logger = LoggerFactory.getLogger(PredictionIdentifier.class);
-
     private final String classifierName;
     private final String criterion;
     private final String predictionClass;

@@ -18,12 +18,10 @@
  */
 package pt.ua.dicoogle.classification.api;
 
+import java.util.Collection;
+
 import pt.ua.dicoogle.sdk.QueryInterface;
 import pt.ua.dicoogle.sdk.datastructs.SearchResult;
-
-import java.net.URI;
-import java.util.Collection;
-import java.util.Map;
 
 /** Interface for Dicoogle classifiers under the form of query interface plugins.
  * @author Eduardo Pinho

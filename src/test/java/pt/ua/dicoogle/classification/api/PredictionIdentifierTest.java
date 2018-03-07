@@ -18,15 +18,14 @@
  */
 package pt.ua.dicoogle.classification.api;
 
-import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Assert;
-import org.junit.Test;
-import pt.ua.dicoogle.classification.api.PredictionIdentifier;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collection;
+
+import org.apache.commons.lang3.tuple.Pair;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * @author Eduardo Pinho <eduardopinho@ua.pt>

@@ -19,11 +19,11 @@
 package pt.ua.dicoogle.classification.api;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import pt.ua.dicoogle.sdk.datastructs.SearchResult;
 
 /**
