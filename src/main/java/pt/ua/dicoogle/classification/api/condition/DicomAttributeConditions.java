@@ -18,14 +18,15 @@
  */
 package pt.ua.dicoogle.classification.api.condition;
 
-import org.dcm4che2.data.DicomElement;
-import org.dcm4che2.data.DicomObject;
-import pt.ua.dicoogle.sdk.utils.TagValue;
-import pt.ua.dicoogle.sdk.utils.TagsStruct;
-
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+
+import org.dcm4che2.data.DicomElement;
+import org.dcm4che2.data.DicomObject;
+
+import pt.ua.dicoogle.sdk.utils.TagValue;
+import pt.ua.dicoogle.sdk.utils.TagsStruct;
 
 /**
  * @author Eduardo Pinho <eduardopinho@ua.pt>

@@ -82,7 +82,7 @@ public abstract class AbstractClassifierPlugin<B> implements ClassifierInterface
             }
         } catch (RuntimeException ex) {
             logger.warn("Unexpected failure", ex);
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
         }
     }
 
@@ -101,13 +101,13 @@ public abstract class AbstractClassifierPlugin<B> implements ClassifierInterface
                 return this.predict(criterion, obj, parameters);
             }
             // silently leave
-            return Collections.EMPTY_MAP;
+            return Collections.emptyMap();
         } catch (DicomCodingException ex) {
-            logger.warn("Ignoring non-DICOM (or corrupted) file {}, ignoring");
-            return Collections.EMPTY_MAP;
+            logger.warn("Non-DICOM (or corrupted) file {}, ignoring");
+            return Collections.emptyMap();
         } catch (IOException ex) {
             logger.warn("Failed to classify {} for {}", item, criterion, ex);
-            return Collections.EMPTY_MAP;
+            return Collections.emptyMap();
         }
     }
 
@@ -124,7 +124,7 @@ public abstract class AbstractClassifierPlugin<B> implements ClassifierInterface
             return this.predict(criterion, this.toDataPoint(obj), parameters);
         } catch (IOException ex) {
             logger.warn("Failed to classify DICOM object for {}", criterion, ex);
-            return Collections.EMPTY_MAP;
+            return Collections.emptyMap();
         }
     }
 

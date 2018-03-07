@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/Enet4/dicoogle-classification-api.svg?branch=master)](https://travis-ci.org/Enet4/dicoogle-classification-api)
 
-This library aims to describe and document a specific category for Dicoogle query provider
+This library aims to describe and document a specific category of Dicoogle query provider
 for the purpose of medical image classification.
 
 ## Purpose
