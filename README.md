@@ -60,7 +60,7 @@ All classification plugins must abide to the following rules:
    `query(String, Object...)`.
    
 2. The first argument of the `QueryInterface#query` method, `String query`, is to be
-   interpreted as the classification criterion, which aggregates (separated by commas)
+   interpreted as the classification **criterion**, which aggregates (separated by commas)
    the unique names of one or more class families recognized by the classifier.
    
 3. The second parameter of `QueryInterface#query`, which is the first element of the
@@ -69,8 +69,8 @@ All classification plugins must abide to the following rules:
       is to be retrieved from storage, where the URI is the unique identifier of the
       item stored in Dicoogle.
    2. If the argument is a `java.lang.String`, a `URI` is created based on the given
-      string and rule `1.3.1` is applied with the obtained URI.
-   3. If the argument type is not a `java.net.URI` nor a `String`, the classifier may
+      string and rule `3.1` is applied with the obtained URI.
+   3. If the argument type is not a `URI` nor a `String`, the classifier may
       also attempt any run-time identification of the element type for its proper
       interpretation. For example, this may include a check for whether the object is an
       instance of `org.dcm4che2.data.DicomObject`, which would then be interpreted as a
@@ -78,10 +78,22 @@ All classification plugins must abide to the following rules:
       explicit cast to the classifier's internal data point representation. This
       behavior allows some level of interoperability when using representations
       specified in frameworks such as those in JavaCPP presets (OpenCV, Caffe, ...).
-   5. If no other transformation specified from `3.1` to `3.4` is successful, a full
-      failure is triggered (see rule `7` regarding failures).
-       
-4. The method `QueryInterface#query` must return a collection of search results (an
+   4. If no other transformation specified from rules `3.1` to `3.3` is successful, a full
+      failure is triggered (see rule `8` regarding failures).
+
+4. If the variably-lengthed argument list to `QueryInterface#query` is larger than 1, then
+   the second will be a dictionary of other predictions to the same item as identified by rule
+   `3` from other classifiers. The object will be an instance of `Map<URI, SearchResult>`
+   and must never be modified from this context.
+   1. The key element is a `URI` following the format specified in rule `5.1`, thus
+   indicating the classifier, criterion, and predicted class. The value element is the
+   respective search result produced according to rule `5`.
+   2. The presence of a particular prediction in this dictionary depends on the order
+   of predictions defined by the classification database. In order to ensure that a
+   particular classifier is invoked only after another, a `dependsOn` relation between
+   the classifiers needs to be established by configuring the database accordingly.
+
+5. The method `QueryInterface#query` must return a collection of search results (an
    instance of `java.util.Collection` containing instances of
    `pt.ua.dicoogle.sdk.datastructs.SearchResult`).
    1. All predictions of a classifier are indexed by a URI following the format
@@ -109,21 +121,22 @@ All classification plugins must abide to the following rules:
       instance of `java.util.Map`. In case of an error output, the extra `error` data
       attribute is reserved to contain a `String` object of an error message. Any other
       information provided in this context may be ignored.
-   4. All converted outputs are to be contained in a proper collection, and that
-      collection must then be returned from the method. No modifications to the
-      collection or the contained search results should be done by the caller.
+   4. All converted outputs are to be contained in a proper collection
+      (`instanceof java.util.Collection`), and that collection must then be returned from
+      the method. No modifications to the collection or the contained search results should
+      be done by the caller.
 
-5. Any conversions required for classifying the given data are implementation details
+6. Any conversions required for classifying the given data are implementation details
    that must automatically take place internally. This includes image resizing/reshaping
    and pixel/voxel type convertion. The classifier is allowed to make a full failure or
    a partial failure if the data point cannot be properly adapted.
 
-6. Since query providers in Dicoogle should not throw (as of v2.4.0 or older versions),
+7. Since query providers in Dicoogle should not throw (as of v2.4.0 or older versions),
    classifiers must never explicitly throw checked exceptions and should also catch all
    non-checked exceptions before they are raised beyond the `query` method. Java errors
    are the only exception to this rule.
 
-7. If a failure occurs at any step of classification, the program must abide to the
+8. If a failure occurs at any step of classification, the program must abide to the
    following rules:
    1. The program is allowed to log the problem using the appropriate slf4j logger at
    any point of handling the failure.

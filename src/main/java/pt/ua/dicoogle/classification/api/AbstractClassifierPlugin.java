@@ -60,6 +60,11 @@ public abstract class AbstractClassifierPlugin<B> implements ClassifierInterface
      *                   classified. If this element is a URI or a string representing the same URI, the
      *                   respective item in storage will be retrieved and converted for classification.
      *                   Otherwise, a simple cast to the internal representation is attempted.
+     *                   The second element is optional and contains predictions from other classifiers
+     *                   in the indexing phase. The presence of a particular set of predictions is only
+     *                   guaranteed if a dependsOn relation between classifiers is established in the
+     *                   classification database.
+     *  
      * @return a collection of predictions, where the result's URI has the format
      *         `class:/<classifier>/<criterion>#<class>` and the probability is kept in the result's score.
      */
@@ -90,7 +95,7 @@ public abstract class AbstractClassifierPlugin<B> implements ClassifierInterface
      * 
      * @param criterion the classification criterion. This is an identifier of the class set.
      * @param item the URI of the item to be classified
-     * @param parameters additional var-arg parameters for miscellaneous options
+     * @param parameters additional var-arg parameters for miscellaneous options (1st element is reserved)
      * @return a dictionary of predicted values and respective scores
      * @throws java.util.NoSuchElementException if the item does not exist
      */
