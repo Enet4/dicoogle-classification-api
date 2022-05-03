@@ -16,14 +16,14 @@
     <repositories>
         <repository>
             <id>mi</id>
-            <url>http://bioinformatics.ua.pt/maven/content/repositories/mi</url>
+            <url>https://bioinformatics.ua.pt/maven/content/repositories/mi</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
             <id>mi-snapshots</id>
-            <url>http://bioinformatics.ua.pt/maven/content/repositories/mi-snapshots</url>
+            <url>https://bioinformatics.ua.pt/maven/content/repositories/mi-snapshots</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -65,11 +65,11 @@
             <distributionManagement>
                 <repository>
                     <id>mi</id>
-                    <url>http://bioinformatics.ua.pt/maven/content/repositories/mi</url>
+                    <url>https://bioinformatics.ua.pt/maven/content/repositories/mi</url>
                 </repository>
                 <snapshotRepository>
                     <id>mi</id>
-                    <url>http://bioinformatics.ua.pt/maven/content/repositories/mi-snapshots</url>
+                    <url>https://bioinformatics.ua.pt/maven/content/repositories/mi-snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
