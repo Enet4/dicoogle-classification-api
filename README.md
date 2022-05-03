@@ -1,7 +1,7 @@
 
 # Dicoogle Classification API
 
-[![Build Status](https://travis-ci.org/Enet4/dicoogle-classification-api.svg?branch=master)](https://travis-ci.org/Enet4/dicoogle-classification-api)
+[![Java CI with Maven](https://github.com/Enet4/dicoogle-classification-api/actions/workflows/maven.yml/badge.svg)](https://github.com/Enet4/dicoogle-classification-api/actions/workflows/maven.yml)
 
 This library aims to describe and document a specific category of Dicoogle query provider
 for the purpose of medical image classification.
